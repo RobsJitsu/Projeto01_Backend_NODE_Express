@@ -1,1 +1,1 @@
-{"client":"Thunder Client","environmentName":"api","dateExported":"2021-11-04T02:52:35.583Z","version":"1.0","variables":[]}
+{"client":"Thunder Client","environmentName":"api","dateExported":"2021-11-05T17:53:16.120Z","version":"1.0","variables":[{"name":"url_filmes","value":"http://localhost:3000/filmes"},{"name":"url_games","value":"http://localhost:3000/games"},{"name":"url_musicas","value":"http://localhost:3000/musicas"}]}

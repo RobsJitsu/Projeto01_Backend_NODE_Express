@@ -1,41 +1,29 @@
 const express = require("express");
 const router = express.Router(); 
 
-let listaMusicas = [];
+let listaMusicas = [{
+    nome:"teste"
+}];
 
 router.get("/", (req,res) => {
-    res.status(200).json({message:"músicas ok"})
-    })
+res.status(200).json({message:"musicas ok"})
+console.log("deu certo");
+})
 
 router.get("/listar", (req,res) => {
     res.status(200).json(listaMusicas);
 });
 
-router.get("/listar/:nome", (req,res) => {
-  const nome = req.params.nome;
-  const musicas = listaMusicas.find((item) => 
-  item.nome === nome);
-  res.status(200).json(musicas);
+router.get("/listar/:id", (req,res) => {
+    const id = req.params.id;
+    const musicas = listaMusicas[id];
+    res.status(200).json({musicas:musicas});
 });
 
-router.get("/listarindex/:nome", (req,res) => {
-    const nome = req.params.nome;
-    const index = listaMusicas.findIndex((item) => 
-    item.nome === nome);
-
-    if(index == -1){
-        res.status(204);
-        return;
-    }
-    res.status(200).json({index:index});
-});
-
-router.post("/", (req,res) => {
+router.post("/add", (req,res) => {
     const musicas = req.body;
-
     listaMusicas.push(musicas); 
-    
-    res.status(201).json({message:"cadastrado com sucesso"} (listaMusicas));
+    res.status(201).json({message:"cadastrado com sucesso"});
 });
 
 router.put("/:id", (req,res) => {
@@ -47,15 +35,6 @@ router.put("/:id", (req,res) => {
     listaMusicas[id] = req.body;
 
     res.status(200).json(listaMusicas[id]);
-});
-
-router.delete("/:id", (req,res) => {
-    const id = req.params.id;
-    delete listaMusicas[id];
-
-    console.log(listaMusicas[id]);
-    
-    res.status(200).json(listaMusicas);
 });
 
 router.delete("/deletar/:id", (req,res) => {
